@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.test.InstrumentationRegistry
 import androidx.test.uiautomator.*
 
-const val USER_NAME = "*****@ford.com"
+const val USER_NAME = "*****"
 const val PASSWORD = "***********"
 const val APPLICATION_ID = "**************"
 const val SELECTED_COUNTRY = "**********"
