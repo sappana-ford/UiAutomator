@@ -7,8 +7,7 @@ import androidx.test.uiautomator.*
 const val USER_NAME = "*****@ford.com"
 const val PASSWORD = "***********"
 const val APPLICATION_ID = "**************"
-//const val APPLICATION_ID = "**************"
-const val SELECTED_COUNTRY = "United States"
+const val SELECTED_COUNTRY = "**********"
 const val FIRST_NAME = "******"
 
 
