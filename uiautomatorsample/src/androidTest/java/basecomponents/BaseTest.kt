@@ -4,12 +4,12 @@ import android.content.Intent
 import androidx.test.InstrumentationRegistry
 import androidx.test.uiautomator.*
 
-const val USER_NAME = "sravan@ford.com"
-const val PASSWORD = "Test12345"
-const val APPLICATION_ID = "com.ford.fordpass"
-//const val APPLICATION_ID = "com.lincoln.lincolnway"
+const val USER_NAME = "*****@ford.com"
+const val PASSWORD = "***********"
+const val APPLICATION_ID = "**************"
+//const val APPLICATION_ID = "**************"
 const val SELECTED_COUNTRY = "United States"
-const val FIRST_NAME = "Sravan"
+const val FIRST_NAME = "******"
 
 
 abstract class BaseTest {
