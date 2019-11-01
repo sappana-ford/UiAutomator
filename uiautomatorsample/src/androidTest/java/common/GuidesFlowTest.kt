@@ -44,7 +44,6 @@ class GuidesFlowTest : BaseTest() {
         clickOnResourceIdAndWaitForNewWindow("guide_call_image")
         findUiObjectWithResourceId("call_guide_estimated_time_header").exists()
         navigateUp()
-        navigateUp()
         clickOnResourceIdAndWaitForNewWindow("guide_email_image")
         findUiObjectByCustomResourceId("com.google.android.gm:id/gmail_logo")
     }

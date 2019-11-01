@@ -43,6 +43,6 @@ class RecallFlowTest : BaseTest() {
         assertTrue(findUiObjectWithText("FSA Title").exists())
         assertTrue(findUiObjectWithResourceId("preferred_dealer_search_button").exists())
         clickOnResourceId("preferred_dealer_search_button")
-        assertTrue(findUiObjectWithResourceId("find_button").waitForExists(2000))
+        assertTrue(findUiObjectWithResourceId("find_button").waitForExists(4000))
     }
 }

@@ -7,6 +7,7 @@ import org.junit.runners.Suite
 @RunWith(Suite::class)
 @Suite.SuiteClasses(
     CommonSuiteTest::class,
-    RecallFlowTest::class
+    RecallFlowTest::class,
+    VehicleDetailsDetailsTest::class
 )
 class FordSuiteTest
