@@ -1,24 +1,19 @@
 package common
 
-import basecomponents.BaseTest
+import FIRST_NAME
+import TARGET_APPLICATION_ID
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.Until
-import basecomponents.APPLICATION_ID
-import basecomponents.FIRST_NAME
-import junit.framework.Assert.assertTrue
-import org.junit.Before
+import basecomponents.BaseTest
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class GuidesFlowTest : BaseTest() {
 
-    @Before
-    override fun setUp() {
-        super.setUp()
-        uiDevice.wait(Until.hasObject(By.res(APPLICATION_ID,"guides_button")), 2000)
-    }
-
     @Test
     fun fromGuides_checkAllThePositiveFlows() {
+        uiDevice.wait(Until.hasObject(By.res(TARGET_APPLICATION_ID,"guides_button")), 2000)
+
         clickOnResourceIdAndWaitForNewWindow("guides_button")
         assertTrue(findUiObjectWithResourceId("guide_chat_image").exists())
         assertTrue(findUiObjectWithResourceId("guide_call_image").exists())

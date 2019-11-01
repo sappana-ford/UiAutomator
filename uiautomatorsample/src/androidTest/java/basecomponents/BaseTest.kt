@@ -1,16 +1,16 @@
 package basecomponents
 
+import PASSWORD
+import SELECTED_COUNTRY
+import TARGET_APPLICATION_ID
+import USER_NAME
 import android.content.Intent
 import androidx.test.InstrumentationRegistry
+import androidx.test.runner.AndroidJUnit4
 import androidx.test.uiautomator.*
+import org.junit.runner.RunWith
 
-const val USER_NAME = "*****"
-const val PASSWORD = "***********"
-const val APPLICATION_ID = "**************"
-const val SELECTED_COUNTRY = "**********"
-const val FIRST_NAME = "******"
-
-
+@RunWith(AndroidJUnit4::class)
 abstract class BaseTest {
 
     protected var uiDevice: UiDevice =
@@ -18,7 +18,7 @@ abstract class BaseTest {
 
     init {
         uiDevice.pressHome()
-        uiDevice.wait(Until.hasObject(By.pkg(APPLICATION_ID)), 5000)
+        uiDevice.wait(Until.hasObject(By.pkg(TARGET_APPLICATION_ID)), 5000)
         startApplication()
         initializeApp()
     }
@@ -29,7 +29,7 @@ abstract class BaseTest {
 
     private fun startApplication() {
         val context = InstrumentationRegistry.getInstrumentation().context
-        val intent = context.packageManager.getLaunchIntentForPackage(APPLICATION_ID)
+        val intent = context.packageManager.getLaunchIntentForPackage(TARGET_APPLICATION_ID)
         intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         context.startActivity(intent)
         allowPermission()
@@ -88,22 +88,27 @@ abstract class BaseTest {
 
     protected fun findUiObjectByCustomResourceId(id: String): UiObject = uiDevice.findObject(UiSelector().resourceId(id))
 
-    protected fun clickOnResourceId(resourceId: String) = findUiObjectByCustomResourceId("$APPLICATION_ID:id/$resourceId").click()
+    protected fun clickOnResourceId(resourceId: String) = findUiObjectByCustomResourceId("$TARGET_APPLICATION_ID:id/$resourceId").click()
 
-    protected fun clickOnResourceIdAndWaitForNewWindow(resourceId: String) = findUiObjectByCustomResourceId("$APPLICATION_ID:id/$resourceId").clickAndWaitForNewWindow()
+    protected fun clickOnResourceIdAndWaitForNewWindow(resourceId: String) = findUiObjectByCustomResourceId("$TARGET_APPLICATION_ID:id/$resourceId").clickAndWaitForNewWindow()
 
     protected fun clickOnTextAndWaitForNewWindow(text: String) = findUiObjectWithText(text).clickAndWaitForNewWindow()
 
     protected fun clickOnText(text: String) = findUiObjectWithText(text).click()
 
-    protected fun findUiObjectWithResourceId(resourceId: String): UiObject = findUiObjectByCustomResourceId("$APPLICATION_ID:id/$resourceId")
+    protected fun findUiObjectWithResourceId(resourceId: String): UiObject = findUiObjectByCustomResourceId("$TARGET_APPLICATION_ID:id/$resourceId")
 
     protected fun findUiObjectWithText(text: String): UiObject = uiDevice.findObject(UiSelector().text(text))
 
     protected fun findUiObjectWithTextContains(text: String): UiObject = uiDevice.findObject(UiSelector().textContains(text))
 
     protected fun hasResourceId(resourceId: String): Boolean = uiDevice.hasObject(By.res(
-        APPLICATION_ID, resourceId))
+        TARGET_APPLICATION_ID, resourceId))
 
     protected fun navigateUp() = uiDevice.pressBack()
+
+    protected fun scrollToObjectWithId(id: String) {
+        val scrollView = UiScrollable(UiSelector().scrollable(true))
+        scrollView.scrollIntoView(UiSelector().resourceId(id))
+    }
 }
